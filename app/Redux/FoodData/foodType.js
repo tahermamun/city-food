@@ -1,0 +1,1 @@
+export const FOOD_TYPE = 'FOOD_TYPE'

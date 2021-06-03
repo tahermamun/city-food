@@ -1,13 +1,10 @@
 import React from 'react';
-import { View, Text } from 'react-native'
 
 const HomeScreen = () => {
     return (
-       <View>
-
-           <Text>home screen</Text>
-
-       </View>
+        <div>
+            a
+        </div>
     );
 };
 
