@@ -1,18 +1,13 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import AppNavigator from './app/AppNavigator';
+import { View } from 'react-native';
+import Footer from './app/components/Footer';
 
 
-
-
-export default function App() {
+export default function App () {
   return (
     <View >
-     
-<AppNavigator></AppNavigator>
-
-
+      <Footer></Footer>
     </View>
   );
 }
