@@ -39,7 +39,6 @@ const styles = StyleSheet.create({
         fontWeight: 400
     }
 
-
 });
 
 export default DishDetails;
