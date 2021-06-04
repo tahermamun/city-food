@@ -1,18 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, FlatList, StyleSheet, Image, TextInput, Button, SafeAreaView, Platform, Pressable, TouchableHighlight, TouchableOpacity } from 'react-native'
+import { View, Text, FlatList, ScrollView, StyleSheet, Image, TextInput, Button, SafeAreaView, Platform, Pressable, TouchableHighlight, TouchableOpacity } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchFoodData } from '../Redux'
+import Hero from '../components/Hero'
+import Footer from '../components/Footer';
 
-
-
-
-const HomeScreen = ({navigation}) => {
-    const [isOpen, setIsOpen] = useState(false);
-
+const HomeScreen = ({ navigation }) => {
     const foodData = useSelector(state => state.foodData.foods)
     const dispatch = useDispatch()
-    const [number, setChangeNumber] = useState('a');
-    console.log(foodData)
+    const [number, setChangeNumber] = useState('rice');
+
     useEffect(() => {
         dispatch(fetchFoodData(number))
     }, [number])
@@ -22,34 +19,25 @@ const HomeScreen = ({navigation}) => {
     }
 
     const renderItem = ({ item }) => (
-
-        <TouchableOpacity onPress={() => navigation.navigate('DishDetails',item)}>
-
-
+        <TouchableOpacity onPress={() => navigation.navigate('DishDetails', item)}>
             <View style={styles.cardContainer}>
                 <Image style={styles.logo} source={item.strMealThumb} />
                 <View style={styles.cardContentBox}>
                     <View style={styles.cardContent}>
-
                         <Text style={styles.textTitle}>{item.strMeal}</Text>
                         <Text>{item.strCategory}</Text>
                     </View>
-
                     <Pressable style={styles.button}>
                         <Text style={styles.text}>Details</Text>
                     </Pressable>
-                    
                 </View>
             </View>
         </TouchableOpacity>
-
-
     );
+
     return (
         <SafeAreaView style={styles.container}>
-
-
-
+            <Hero></Hero>
             <View style={styles.searchContainer}>
                 <TextInput
                     style={styles.input}
@@ -66,12 +54,9 @@ const HomeScreen = ({navigation}) => {
                 data={foodData}
                 renderItem={renderItem}
             />
-
-
-
-
-
-
+            <View >
+                <Footer></Footer>
+            </View>
         </SafeAreaView>
     );
 };
@@ -96,13 +81,10 @@ const styles = StyleSheet.create({
         letterSpacing: 0.25,
         color: 'white',
     },
-
-
-
     container: {
-        paddingTop: Platform.OS === 'android' ? '100px' : 0,
-        marginTop: 50
-        // backgroundColor: '#fff',
+        paddingTop: Platform.OS === 'android' ? 20 : 0,
+        // marginTop: 50,
+        backgroundColor: 'pink',
 
     },
     cardContainer: {
@@ -110,7 +92,6 @@ const styles = StyleSheet.create({
         width: '200',
         margin: 50,
         borderRadius: 15,
-        cursor: 'pointer',
         backgroundColor: '#fff',
     },
     searchContainer: {
@@ -121,7 +102,7 @@ const styles = StyleSheet.create({
     },
     textTitle: {
         fontSize: 20,
-        fontWeight: 700
+        fontWeight: 'bold'
     },
     cardContentBox: {
         color: '#000',
@@ -129,7 +110,6 @@ const styles = StyleSheet.create({
         paddingBottom: 25,
         paddingLeft: 15,
         paddingRight: 15,
-
         flex: 1,
         flexDirection: "row",
         flexWrap: "wrap",
@@ -140,32 +120,21 @@ const styles = StyleSheet.create({
         width: '100%',
         height: 230,
         borderRadius: 15,
-
     },
     input: {
         width: '80%',
-        border: 'none',
-        outline: 'none',
         backgroundColor: "#e8e9e9",
         lineHeight: 20,
         padding: 10,
         marginTop: 50,
         color: "#000000",
         fontSize: 15,
-        boxSizing: 'border-box',
         borderRadius: 5,
         letterSpacing: 0.7
     }
 
 });
 export default HomeScreen;
-
-
-
-
-
-
-
 
 
 

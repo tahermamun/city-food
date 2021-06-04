@@ -10,7 +10,7 @@ export const fetchFoodAction = foods => {
 
 export const fetchFoodData = (n) => {
     return (dispatch) => {
-        axios.get(`https://www.themealdb.com/api/json/v1/1/search.php?f=${n}`)
+        axios.get(`https://www.themealdb.com/api/json/v1/1/search.php?s=${n}`)
             .then(res => {
                 dispatch(fetchFoodAction(res.data.meals))
             })

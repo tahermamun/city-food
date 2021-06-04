@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Text, View, Platform, StyleSheet, Image } from 'react-native';
 
@@ -15,42 +14,27 @@ const DishDetails = ({ navigation }) => {
 };
 
 const styles = StyleSheet.create({
-
     DishDetailsContainer: {
         margin: 50
     },
-
     bannerPicture: {
         width: '100%',
         height: 230,
-        // borderRadius: 15,
-
     },
     dishTitle: {
         fontSize: 30,
-        fontWeight: 700
+        fontWeight: 'bold'
     },
     subDishTitle: {
         fontSize: 20,
-        fontWeight: 500
+        fontWeight: 'bold'
     },
     subDishDetails: {
         fontSize: 18,
-        fontWeight: 400
+        fontWeight: 'bold'
     }
 
 });
 
 export default DishDetails;
-
-
-
-
-
-
-
-
-
-
-
 

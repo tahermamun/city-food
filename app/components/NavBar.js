@@ -1,33 +1,17 @@
-import 'react-native-gesture-handler';
-import React from 'react';
-import { StyleSheet, Text, View,Button } from 'react-native';
-
-import { createStackNavigator } from '@react-navigation/stack';
-import Header from '../components/Header';
+import { createStackNavigator } from 'react-navigation-stack';
+import { createAppContainer } from 'react-navigation'
+import HomeScreen from '../screens/HomeScreen'
+import DishDetails from '../screens/DishDetails'
 
 
+const  NavBar = {
+    CityyFood: {
+        screen: HomeScreen,
+    },
+    DishDetails: {
+        screen: DishDetails,
+    }
+}
 
-const Stack = createStackNavigator();
-
-const NavBar = () => {
-    return (
-        <Stack.Navigator>
-        <Stack.Screen 
-        name="City Food"
-        component={Header}
-        options={{
-          headerRight: () => (
-            <Button
-              onPress={() => alert('Please Select Your Food from the menu')}
-              title="More Info"
-              color="#00cc00"
-            />
-          ),
-        }}
-        />
-        
-      </Stack.Navigator>
-    );
-};
-
-export default NavBar;
+const Stack = createStackNavigator(NavBar);
+export default createAppContainer(Stack)
