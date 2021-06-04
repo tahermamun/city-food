@@ -37,7 +37,7 @@ const HomeScreen = ({ navigation }) => {
                         height: 200,
                         borderRadius: 30
                     }}
-                    source={item.strMealThumb} />
+                    source={{uri:item.strMealThumb}} />
                 <View style={styles.cardContentBox}>
                     <View style={styles.cardContent}>
                         <Text style={styles.textTitle}>{item.strMeal}</Text>
@@ -77,7 +77,6 @@ const HomeScreen = ({ navigation }) => {
 };
 const styles = StyleSheet.create({
 
-  
     container: {
         paddingTop: Platform.OS === 'android' ? 20 : 0,
         // marginTop: 50,

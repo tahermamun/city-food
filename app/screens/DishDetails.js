@@ -5,7 +5,7 @@ const DishDetails = ({ navigation }) => {
     console.log(navigation)
     return (
         <View style={styles.DishDetailsContainer}>
-            <Image style={styles.bannerPicture} source={navigation.getParam("strMealThumb")} />
+            <Image style={styles.bannerPicture} source={{uri: navigation.getParam("strMealThumb")}} />
             <Text style={styles.dishTitle}>{navigation.getParam("strMeal")}</Text>
             <Text style={styles.subDishTitle}>{navigation.getParam("strCategory")} || {navigation.getParam("strArea")}</Text>
             <Text style={styles.subDishDetails}>{navigation.getParam("strInstructions")}</Text>
