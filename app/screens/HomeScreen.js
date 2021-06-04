@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, FlatList, ScrollView, StyleSheet, Image, TextInput, Button, SafeAreaView, Platform, Pressable, TouchableHighlight, TouchableOpacity } from 'react-native'
+import { View, Text, FlatList, ScrollView, StyleSheet, Image, SIZES, TextInput, Button, SafeAreaView, Platform, Pressable, TouchableHighlight, TouchableOpacity } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchFoodData } from '../Redux'
 import Hero from '../components/Hero'
 import Footer from '../components/Footer';
+
+
+
+
 
 const HomeScreen = ({ navigation }) => {
     const foodData = useSelector(state => state.foodData.foods)
@@ -19,15 +23,27 @@ const HomeScreen = ({ navigation }) => {
     }
 
     const renderItem = ({ item }) => (
-        <TouchableOpacity onPress={() => navigation.navigate('DishDetails', item)}>
-            <View style={styles.cardContainer}>
-                <Image style={styles.logo} source={item.strMealThumb} />
+        <TouchableOpacity
+            style={{ marginBottom: 20, padding:20 }}
+            onPress={() => navigation.navigate('DishDetails', item)}>
+            <View style={{
+                marginBottom: 20
+            }}
+            >
+                <Image
+                    resizeMode='cover'
+                    style={{
+                        width: '100%',
+                        height: 200,
+                        borderRadius: 30
+                    }}
+                    source={item.strMealThumb} />
                 <View style={styles.cardContentBox}>
                     <View style={styles.cardContent}>
                         <Text style={styles.textTitle}>{item.strMeal}</Text>
                         <Text>{item.strCategory}</Text>
                     </View>
-                   
+
                 </View>
             </View>
         </TouchableOpacity>
@@ -61,37 +77,12 @@ const HomeScreen = ({ navigation }) => {
 };
 const styles = StyleSheet.create({
 
-    button: {
-        alignItems: 'center',
-        justifyContent: 'center',
-        paddingVertical: 5,
-        paddingHorizontal: 32,
-        borderRadius: 4,
-        elevation: 3,
-        backgroundColor: 'black',
-        width: 40,
-        flexDirection: "row",
-        flexWrap: "wrap",
-    },
-    text: {
-        fontSize: 16,
-        lineHeight: 21,
-        fontWeight: 'bold',
-        letterSpacing: 0.25,
-        color: 'white',
-    },
+  
     container: {
         paddingTop: Platform.OS === 'android' ? 20 : 0,
         // marginTop: 50,
         backgroundColor: 'pink',
 
-    },
-    cardContainer: {
-        height: 300,
-        width: 400,
-        margin: 50,
-        borderRadius: 15,
-        backgroundColor: '#fff',
     },
     searchContainer: {
         flex: 1,
@@ -109,10 +100,8 @@ const styles = StyleSheet.create({
         paddingBottom: 25,
         paddingLeft: 15,
         paddingRight: 15,
-        flex: 1,
-        flexDirection: "row",
-        flexWrap: "wrap",
-        justifyContent: "space-between"
+        backgroundColor:'#fff',
+        borderRadius: 30
     },
 
     logo: {
