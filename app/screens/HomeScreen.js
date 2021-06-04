@@ -9,7 +9,7 @@ const HomeScreen = ({ navigation }) => {
     const foodData = useSelector(state => state.foodData.foods)
     const dispatch = useDispatch()
     const [number, setChangeNumber] = useState('rice');
-
+    console.log(foodData)
     useEffect(() => {
         dispatch(fetchFoodData(number))
     }, [number])
@@ -27,9 +27,7 @@ const HomeScreen = ({ navigation }) => {
                         <Text style={styles.textTitle}>{item.strMeal}</Text>
                         <Text>{item.strCategory}</Text>
                     </View>
-                    <Pressable style={styles.button}>
-                        <Text style={styles.text}>Details</Text>
-                    </Pressable>
+                   
                 </View>
             </View>
         </TouchableOpacity>
@@ -53,6 +51,7 @@ const HomeScreen = ({ navigation }) => {
             <FlatList
                 data={foodData}
                 renderItem={renderItem}
+                keyExtractor={item => item.idMeal}
             />
             <View >
                 <Footer></Footer>
@@ -89,7 +88,7 @@ const styles = StyleSheet.create({
     },
     cardContainer: {
         height: 300,
-        width: '200',
+        width: 400,
         margin: 50,
         borderRadius: 15,
         backgroundColor: '#fff',
