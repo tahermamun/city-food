@@ -5,7 +5,7 @@ import DishDetails from '../screens/DishDetails'
 
 
 const  NavBar = {
-    CityyFood: {
+    CityFood: {
         screen: HomeScreen,
     },
     DishDetails: {

@@ -10,8 +10,6 @@ export default function App() {
   return (
     <Provider store={store}>
       <Navigator />
-   
-
     </Provider>
   );
 }
